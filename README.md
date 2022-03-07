@@ -18,7 +18,7 @@
    ## Installation 
    
    The project's GitHub repository: https://github.com/malakhavam/note-taker <br/>
-   Deployed application access with the Heroku:  
+   Deployed application access with the Heroku: https://maryia-note-taker.herokuapp.com <br/>  
    To install the project follow these steps: 
    * Clone the application from GitHub with: git clone [clone link from GitHub] 
    * From the root folder, install the dependencies with: npm install
