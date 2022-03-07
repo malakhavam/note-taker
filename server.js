@@ -15,6 +15,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public")) 
 
+// Setting the routes
+
+// HTML routes main page
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'develop/public/index.html'));
+  });
+  
+// HTML routes notes page
+app.get('/notes', function(req, res) {
+    res.sendFile(path.join(__dirname, 'develop/public/notes.html'));
+  });
+
+
 // Starting the server
 app.listen(PORT, () => {
     console.log(`Now listening ${PORT}`);
