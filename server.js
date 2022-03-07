@@ -2,9 +2,10 @@
 const express = require('express');
 const path = require("path");
 const fs = require('fs');
+const notestore = require('./db/notestore.js')
 
 // Setup database
-let db = require('./develop/db/db.json');
+let db = require('./db/db.json');
 
 // Setup PORT
 const app = express();
@@ -19,14 +20,35 @@ app.use(express.static("public"))
 
 // HTML routes main page
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'develop/public/index.html'));
+    res.sendFile(path.join(__dirname, '/public/index.html'));
   });
   
 // HTML routes notes page
 app.get('/notes', function(req, res) {
-    res.sendFile(path.join(__dirname, 'develop/public/notes.html'));
+    res.sendFile(path.join(__dirname, '/public/notes.html'));
   });
 
+// Return all saved notes
+  app.get(`/api/notes`, (req, res) => {
+    var notetake = notestore.getNotes()
+    res.json(notetake);
+});
+
+// Create a new note
+app.post('/api/notes', (req, res) => {
+    var addNote = req.body;
+console.log(addNote);
+notestore.addNote(addNote)
+    res.json(addNote);
+    
+});
+
+// Delete note
+
+app.delete("/api/notes/:id",function(req,res){
+    notestore.deleteNote(req.params.id);
+    res.json({ok:true})
+  })
 
 // Starting the server
 app.listen(PORT, () => {

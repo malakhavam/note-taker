@@ -1,17 +1,17 @@
 var fs = require('fs')
-const uuidv1 = require('uuid/v1')
+const uuidv1 = require('uuidv1')
 
 class Storage{
 
 getNotes(){
-    var notetake = fs.readFileSync('./develop/db/db.json','utf8')
+    var notetake = fs.readFileSync('./db/db.json','utf8')
     var jsonnotetake = JSON.parse(notetake)
     console.log('jsonnotetake',jsonnotetake)
     return jsonnotetake
 };
 
 addNote(note){
-    var notetake = fs.readFileSync('./develop/db/db.json','utf8')
+    var notetake = fs.readFileSync('./db/db.json','utf8')
     var jsonnotetake = JSON.parse(notetake)
     var {title,text} = note
     var addNote = {title,text,id:uuidv1()}
@@ -21,7 +21,7 @@ addNote(note){
     console.log(notes)
 };
 deleteNote(id){
-    var notetake = fs.readFileSync('./develop/db/db.json','utf8')
+    var notetake = fs.readFileSync('./db/db.json','utf8')
     var jsonnotetake = JSON.parse(notetake)
     var updatedNotes = jsonnotetake.filter((note)=> note.id!==id)
     var stringnotes = JSON.stringify(updatedNotes)
