@@ -2,7 +2,7 @@ var fs = require('fs')
 var uuid = require('uuid');
 const uuidv1 = require('uuid/v1');
 
-console.log(uuid.v1());
+// console.log(uuid.v1());
 
 class Storage{
 
