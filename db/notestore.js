@@ -1,5 +1,8 @@
 var fs = require('fs')
-const uuidv1 = require('uuidv1')
+var uuid = require('uuid');
+const uuidv1 = require('uuid/v1');
+
+console.log(uuid.v1());
 
 class Storage{
 
